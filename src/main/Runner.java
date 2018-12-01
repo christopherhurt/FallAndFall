@@ -18,8 +18,11 @@ public class Runner {
         TexturedGameObject fallingChar = new TexturedGameObject(0, 0, .005f, 0, 0, .0001f, .1f, .1f, "fallingDUMASS", new Texture("tempChar.png"));
         Game.addObjectToScene("game", gameBackground);
         Game.addObjectToScene("game", fallingChar);
-        Cloud cloud = new Cloud("cloud1");
+        Cloud cloud = new Cloud("cloud1", "tempCloud.png");
         Game.addObjectToScene("game", cloud);
+        Animation birdAnim = new Animation(0, new Texture("tempBird.png"));
+        Bird bird = new Bird("bird", birdAnim);
+        Game.addObjectToScene("game", bird);
         
         Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
     }
