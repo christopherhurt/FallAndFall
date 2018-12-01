@@ -1,24 +1,22 @@
 package main;
 
+
+import java.util.Random;
+
 import main.Texture;
 import main.TexturedGameObject;
 
 public class Cloud extends TexturedGameObject {
     
-    public static final int NOTE1 = 0;
-    public static final int NOTE2 = 1;
-    public static final int NOTE3 = 2;
-    public static final int NOTE4 = 3;
+    private static final float CLOUD_RANGE = .1f;
     
-    private static final Texture NOTE1_TEX = Utils.BUTTON_SHEET.getTexture(0, 0);
-    private static final Texture NOTE2_TEX = Utils.BUTTON_SHEET.getTexture(0, 1);
-    private static final Texture NOTE3_TEX = Utils.BUTTON_SHEET.getTexture(0, 2);
-    private static final Texture NOTE4_TEX = Utils.BUTTON_SHEET.getTexture(0, 3);
-    
-    private int type;
+    private static Random ran = new Random();
+    private static float width = (float) (ran.nextInt((int) (CLOUD_RANGE * 10)) / 100.0) + .1f;
+    private static float height = width;
+    private static float x = (float) (ran.nextInt(100) / 100.0);
     
     public Cloud(String id) {
-        super(.5f, 1f, 0f, .003f, 0f, 0f, .1f, .1f, "cloud", );
+        super(x, 1f, 0, Runner.UPWARD_SPEED, 0, 0, width, height, id, new Texture("tempChar.png"));
     }
     
 }
