@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 
 public class FallingBro extends AnimatedGameObject 
 {
-    private boolean initialAnim;
-
+    private static final float SPEED = 0.0002f;
+    
     public FallingBro(
         float x,
         float y,
@@ -16,44 +16,66 @@ public class FallingBro extends AnimatedGameObject
         float w,
         float h,
         String id,
-        Animation animation,
-        boolean initialAnim) 
+        Animation animation) 
     {
         super(x, y, vX, vY, aX, aY, w, h, id, animation);
-        this.initialAnim = initialAnim;
     }
 
     @Override
     public void update()
     {
-        if (initialAnim)
+        if (leftBound() && getVelX() < 0)
         {
-            if (getX() >= .45 && getX() <= .55)
-            {
-                setVelX(0);
-                setVelY(0);
-                setAccX(0);
-                setAccY(0);
-                initialAnim = false;
-            }
-            return;
+            setVelX(0);
+            setAccX(0);
+        }
+        if (rightBound() && getVelX() > 0)
+        {
+            setVelX(0);
+            setAccX(0);
         }
         
-        if (Input.isButtonDown(KeyEvent.VK_LEFT))
+        if (Input.isKeyPressed(KeyEvent.VK_LEFT) && !leftBound())
         {
-            setVelX(-.004f);
+            setAccX(-SPEED);
         }
-        if (Input.isButtonReleased(KeyEvent.VK_LEFT)) 
+        if (Input.isKeyReleased(KeyEvent.VK_LEFT))
         {
-            setVelX(0);
+            setAccX(0);
         }
-        if (Input.isButtonDown(KeyEvent.VK_RIGHT))
+        if (Input.isKeyPressed(KeyEvent.VK_RIGHT) && !rightBound())
         {
-            setVelX(.004f);
+            setAccX(SPEED);
         }
-        if (Input.isButtonReleased(KeyEvent.VK_RIGHT)) 
+        if (Input.isKeyReleased(KeyEvent.VK_RIGHT))
         {
-            setVelX(0);
+            setAccX(0);
         }
+        if (Input.isKeyPressed(KeyEvent.VK_UP))
+        {
+            setAccY(-SPEED);
+        }
+        if (Input.isKeyReleased(KeyEvent.VK_UP))
+        {
+            setAccY(0);
+        }
+        if (Input.isKeyPressed(KeyEvent.VK_DOWN))
+        {
+            setAccY(SPEED);
+        }
+        if (Input.isKeyReleased(KeyEvent.VK_DOWN))
+        {
+            setAccY(0);
+        }
+    }
+    
+    private boolean leftBound()
+    {
+        return getX() <= .0001f;
+    }
+    
+    private boolean rightBound()
+    {
+        return getX() >= 1 - getWidth() -.0001f;
     }
 }
