@@ -5,7 +5,7 @@ import java.util.Random;
 public class Bird extends AnimatedGameObject {
     
     private static Random ran = new Random();
-    private static float width = .1f;
+    private static float width = .05f;
     private static float height = width;
     private static float x = (float) (ran.nextInt(100 - (int) (100 * width)) / (100.0 - 100 * width));
     
