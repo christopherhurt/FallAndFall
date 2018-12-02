@@ -9,7 +9,7 @@ public class MainMenu {
     public static void construct() {
         Game.clearScene("mainMenu");
         
-        GameObject background = new TexturedGameObject(0, 0, 0, 0, 0, 0, 1, 8, "mainMenuBackground", new Texture("sprites/background.png"));
+        GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "mainMenuBackground", new Texture("sprites/background.png"));
         Game.addObjectToScene("mainMenu", background);
         
         final float titleWidth = 0.4f; // TODO: adjust these
@@ -41,8 +41,8 @@ public class MainMenu {
         
         @Override
         public void update() {
-            if(isClicked()) { // TODO: start the game
-                Starter.start(0.004f, 0.0015f, 0);
+            if(isClicked()) {
+                Starter.startThrowScene();
             }
         }
         

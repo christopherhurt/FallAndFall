@@ -9,7 +9,7 @@ public class GameOverMenu {
     public static void construct() {
         Game.clearScene("gameOverMenu");
         
-        GameObject background = new TexturedGameObject(0, 0, 0, 0, 0, 0, 1, 8, "gameOverMenuBackground", new Texture("sprites/background.png"));
+        GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "gameOverMenuBackground", new Texture("sprites/background.png"));
         Game.addObjectToScene("gameOverMenu", background);
         
         final float messageWidth = 0.4f; // TODO: adjust these
@@ -41,8 +41,8 @@ public class GameOverMenu {
         
         @Override
         public void update() {
-            if(isClicked()) { // TODO: restart the game
-                Starter.start(0.004f, 0.0015f, 0);
+            if(isClicked()) {
+                Starter.startThrowScene();
             }
         }
         

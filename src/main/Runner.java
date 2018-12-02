@@ -17,11 +17,12 @@ public class Runner {
     {
         MainMenu.init();
         GameOverMenu.init();
+        Game.createScene("throwScene");
         Game.createScene("game");
         
         MainMenu.construct();
         
-        Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
+        Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "Fall and Fall", null, MAX_FPS, Color.RED);
     }
     
 }

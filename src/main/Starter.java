@@ -1,16 +1,36 @@
 package main;
 
+import java.awt.Color;
+
 public class Starter {
     
-    public static void start(float vX, float vY, int throwScore) {
+    public static void startThrowScene() {
+        Game.clearScene("throwScene");
+        
+        GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "throwSceneBackground", new Texture("sprites/background.png"));
+        Game.addObjectToScene("throwScene", background);
+        
+        GameObject building = new ColoredGameObject(0, 0.6f, 0, 0, 0, 0, 0.35f, 0.4f, "building", Color.GRAY); // TODO: texture
+        Game.addObjectToScene("throwScene", building);
+        
+        ThrowerBro thrower = new ThrowerBro(building);
+        Game.addObjectToScene("throwScene", thrower);
+        
+        GameObject thrownPlayer = new ThrownBro(thrower);
+        Game.addObjectToScene("throwScene", thrownPlayer);
+        
+        Game.setCurrentScene("throwScene");
+    }
+    
+    public static void startFallScene(float vX, float vY, int throwScore) {
         Game.clearScene("game");
         Spawner spawner = new Spawner(Runner.SPAWN_PROBABILITY_BIRD, Runner.SPAWN_PROBABILITY_AIRPLANE);
         Game.addObjectToScene("game", spawner);
         
         Background gameBackground = new Background(0);
         Game.addObjectToScene("game", gameBackground);
-
-        HighScoreMenu score = new HighScoreMenu("score");
+        
+        HighScoreMenu score = new HighScoreMenu("score", throwScore);
         Game.attachMenuToScene("game", score.getMenu());
         
         SpriteSheet fallingBroSprite = new SpriteSheet("sprites/player.png", 4, 8);
@@ -27,5 +47,5 @@ public class Starter {
         
         Game.setCurrentScene("game");
     }
-
+    
 }
