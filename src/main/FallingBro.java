@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 public class FallingBro extends AnimatedGameObject 
 {
     private static final float SPEED = 0.0002f;
+    private static final float SIZE = 0.05f;
     
     public FallingBro(
         float x,
@@ -13,12 +14,10 @@ public class FallingBro extends AnimatedGameObject
         float vY,
         float aX,
         float aY,
-        float w,
-        float h,
         String id,
         Animation animation) 
     {
-        super(x, y, vX, vY, aX, aY, w, h, id, animation);
+        super(x, y, vX, vY, aX, aY, SIZE, 2 * SIZE, id, animation);
     }
 
     @Override
@@ -26,14 +25,25 @@ public class FallingBro extends AnimatedGameObject
     {
         if (leftBound() && getVelX() < 0)
         {
+            setX(0);
             setVelX(0);
-            setAccX(0);
         }
         if (rightBound() && getVelX() > 0)
         {
+            setX(1 - getWidth());
             setVelX(0);
-            setAccX(0);
         }
+        if (topBound() && getVelY() < 0)
+        {
+            setY(0);
+            setVelY(0);
+        }
+        if (bottomBound() && getVelY() > 0)
+        {
+            setY(1 - getHeight());
+            setVelY(0);
+        }
+        
         
         if (Input.isKeyPressed(KeyEvent.VK_LEFT) && !leftBound())
         {
@@ -51,7 +61,7 @@ public class FallingBro extends AnimatedGameObject
         {
             setAccX(0);
         }
-        if (Input.isKeyPressed(KeyEvent.VK_UP))
+        if (Input.isKeyPressed(KeyEvent.VK_UP) && !topBound())
         {
             setAccY(-SPEED);
         }
@@ -59,7 +69,7 @@ public class FallingBro extends AnimatedGameObject
         {
             setAccY(0);
         }
-        if (Input.isKeyPressed(KeyEvent.VK_DOWN))
+        if (Input.isKeyPressed(KeyEvent.VK_DOWN) && !bottomBound())
         {
             setAccY(SPEED);
         }
@@ -71,11 +81,21 @@ public class FallingBro extends AnimatedGameObject
     
     private boolean leftBound()
     {
-        return getX() <= .0001f;
+        return getX() <= 0;
     }
     
     private boolean rightBound()
     {
-        return getX() >= 1 - getWidth() -.0001f;
+        return getX() >= 1 - getWidth();
+    }
+    
+    private boolean topBound()
+    {
+        return getY() <= 0;
+    }
+    
+    private boolean bottomBound()
+    {
+        return getY() >= 1 - getHeight();
     }
 }
