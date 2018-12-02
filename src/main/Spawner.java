@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Color;
-import java.util.Random;
 
 public class Spawner extends ColoredGameObject {
     

@@ -27,13 +27,13 @@ public class GameOverMenu {
     
     private static class RestartButton extends TexturedMenuButton {
         
-        private static final float WIDTH = 0.4f; // TODO: adjust these
-        private static final float HEIGHT = 0.1f;
+        private static final float HEIGHT = 0.1f; // TODO: adjust these
+        private static final float WIDTH = HEIGHT * 88f / 25f;
         private static final float Y = 0.6f;
         
-        private static final Texture UNHOVERED_TEX = new Texture("tempBirg.png"); // TODO
-        private static final Texture HOVERED_TEX = new Texture("tempChar.png");
-        private static final Texture CLICKED_TEX = new Texture("tempCloud.png");
+        private static final Texture UNHOVERED_TEX = new Texture("menus/restartButtonUnhovered.png"); // TODO
+        private static final Texture HOVERED_TEX = new Texture("menus/restartButtonHovered.png");
+        private static final Texture CLICKED_TEX = new Texture("menus/restartButtonClicked.png");
         
         public RestartButton() {
             super((1 - WIDTH) / 2, Y, WIDTH, HEIGHT, UNHOVERED_TEX, HOVERED_TEX, CLICKED_TEX, "restartButton");
