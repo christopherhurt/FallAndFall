@@ -8,6 +8,7 @@ public class Spawner extends ColoredGameObject {
     private float probability;
     private static final float PLANE_OFFSET = Camera.getY() + .75f;
     private static final float OFFSET_RANGE = .75f;
+    private static final float PROB_UPDATE = .0000001f;
     private Random ran;
     private float prob;
     
@@ -21,15 +22,15 @@ public class Spawner extends ColoredGameObject {
     public void update() {
         setY(Camera.getY());
         prob = (float) Math.random();
-        if (prob == probability) {
+        if (prob < probability) {
             Game.addObjectToScene("game", new Bird("bird"));
         }
         prob = (float) Math.random();
-        if (prob == probability) {
-            float offset = (float) (ran.nextInt((int) OFFSET_RANGE * 100) / (100.0));
+        if (prob < probability) {
+            float offset = (float) (Math.random() * OFFSET_RANGE);
             Game.addObjectToScene("game", new AirPlane("airplane", offset + PLANE_OFFSET));
         }
-        prob += .000006;
+        prob += PROB_UPDATE;
     }
 
 }

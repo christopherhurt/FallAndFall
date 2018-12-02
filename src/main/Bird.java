@@ -1,10 +1,8 @@
 package main;
 
-import java.util.Random;
 
 public class Bird extends AnimatedGameObject {
     
-    private static Random ran = new Random();
     private static float width = .1f;
     private static float height = width;
     private static SpriteSheet birdSprite = new SpriteSheet("sprites/bird.png", 8, 8);
@@ -15,7 +13,7 @@ public class Bird extends AnimatedGameObject {
     private static final float OFFSET = Camera.getY() + 1f + .1f;
     
     public Bird(String id) {
-        super(getRandomX(), 1f, OFFSET, Runner.UPWARD_SPEED, 0, 0, width, height, id, birdAnim);
+        super(getRandomX(), OFFSET, 0, Runner.UPWARD_SPEED, 0, 0, width, height, id, birdAnim);
     }
     
     @Override
@@ -28,6 +26,6 @@ public class Bird extends AnimatedGameObject {
     }
     
     private static float getRandomX() {
-        return (float) (ran.nextInt(100 - (int) (100 * width)) / (100.0 - 100 * width));
+        return (float) (Math.random() * (1 - width));
     }
 }

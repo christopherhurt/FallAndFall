@@ -10,7 +10,7 @@ public class Runner {
 
     public static final float UPWARD_SPEED = -.005f;
     
-    public static final float SPAWN_PROBABILITY = .0006f;
+    public static final float SPAWN_PROBABILITY = .01f;
     
     public static void main(String[] args) 
     {
@@ -31,14 +31,14 @@ public class Runner {
         Texture t5F = fallingBroSprite.getTexture(0, 5);
         Texture t6F = fallingBroSprite.getTexture(0, 6);
         Animation fallingBroAnim = new Animation(.5f, t0F, t1F, t2F, t3F, t2F, t1F, t0F, t4F, t5F, t6F, t5F, t4F);
-        FallingBro fallingBro = new FallingBro(0, 0, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
+        FallingBro fallingBro = new FallingBro(-.1f, -.1f, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
         Game.addObjectToScene("game", fallingBro);
         
-        Bird bird = new Bird("bird");
-        Game.addObjectToScene("game", bird);
-        
-        AirPlane plane = new AirPlane("plane", 0);
-        Game.addObjectToScene("game", plane);
+//        Bird bird = new Bird("bird");
+//        Game.addObjectToScene("game", bird);
+//        
+//        AirPlane plane = new AirPlane("plane", 0);
+//        Game.addObjectToScene("game", plane);
         
         Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
     }
