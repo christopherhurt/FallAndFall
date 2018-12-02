@@ -6,7 +6,7 @@ import java.util.List;
 public class FallingBro extends AnimatedGameObject 
 {
     private static final float SPEED = 0.0002f;
-    private static final float SIZE = 0.05f;
+    private static final float SIZE = 0.035f;
     private boolean initialAnimation;
     
     public FallingBro(
