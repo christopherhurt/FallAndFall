@@ -14,14 +14,11 @@ public class Runner {
     {
         Game.createScene("game");
         
-        TexturedGameObject gameBackground = new TexturedGameObject(0, 0, 0, 0, 0, 0, 1, 1, "gameBackground", new Texture("tempBackground.png"));
+        Background gameBackground = new Background(0);
         Game.addObjectToScene("game", gameBackground);
         
         FallingBro fallingBro = new FallingBro(0, 0, 0.004f, 0.0015f, -0.00001f, 0.00001f, 0.1f, 0.1f, "fallingDUMASS", new Animation(0, new Texture("tempChar.png")));     
         Game.addObjectToScene("game", fallingBro);
-        
-        Cloud cloud = new Cloud("cloud1", "tempCloud.png");
-        Game.addObjectToScene("game", cloud);
         
         Bird bird = new Bird("bird", new Animation(0, new Texture("tempBird.png")));
         Game.addObjectToScene("game", bird);
