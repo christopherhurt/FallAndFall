@@ -13,7 +13,10 @@ public class Background extends TexturedGameObject {
     @Override
     public void update() {
         if (!past && getY() < 1 + OFFSET - getHeight()) {
-            new Background(getY() + getHeight());
+            Game.addObjectToScene("game", new Background(getY() + getHeight()));
+            Game.readdObjects("bird");
+            Game.readdObjects("fallingDUMASS");
+            //Game.readdObjects("airplane");
             past = true;
         }
         if (getY() < -1 * getHeight()) {
