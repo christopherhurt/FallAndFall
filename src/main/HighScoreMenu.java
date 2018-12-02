@@ -5,16 +5,27 @@ import java.awt.Font;
 
 public class HighScoreMenu {
 
-    private Menu highScoreMenu;
+    private static Menu highScoreMenu;
     
     public HighScoreMenu(String name)
     {
         highScoreMenu = new Menu(name);
-        highScoreMenu.addLabel(new HighScoreMenuLabel("0", "Arial", Font.PLAIN, .05f, Color.BLACK, .8f, .1f, "score"));
+        highScoreMenu.addLabel(new MenuLabel("Score:", "Arial", Font.PLAIN, .03f, Color.BLACK, .9f, .05f, "label"));
+        highScoreMenu.addLabel(new HighScoreMenuLabel("0", "Arial", Font.PLAIN, .03f, Color.BLACK, .9f, .1f, "score"));
     }
     
-    public void incrementScore(int increment)
+    public static int getScore()
     {
-        highScoreMenu.getLabel("score").setText("" + (Integer.parseInt(highScoreMenu.getLabel("score").getText()) + increment));
+        return Integer.parseInt(highScoreMenu.getLabel("score").getText());
+    }
+    
+    public static void setScore(int score)
+    {
+        highScoreMenu.getLabel("score").setText("" + score);
+    }
+    
+    public Menu getMenu()
+    {
+        return highScoreMenu;
     }
 }

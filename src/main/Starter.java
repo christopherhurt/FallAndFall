@@ -10,6 +10,9 @@ public class Starter {
         Background gameBackground = new Background(0);
         Game.addObjectToScene("game", gameBackground);
 
+        HighScoreMenu score = new HighScoreMenu("score");
+        Game.attachMenuToScene("game", score.getMenu());
+        
         SpriteSheet fallingBroSprite = new SpriteSheet("sprites/player.png", 4, 8);
         Texture t0F = fallingBroSprite.getTexture(0, 0);
         Texture t1F = fallingBroSprite.getTexture(0, 1);
