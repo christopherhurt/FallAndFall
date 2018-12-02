@@ -29,8 +29,17 @@ public class Runner {
         FallingBro fallingBro = new FallingBro(0, 0, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
         Game.addObjectToScene("game", fallingBro);
         
-        Bird bird = new Bird("bird", new Animation(0, new Texture("sprites/tempBird.png")));
+        SpriteSheet birdSprite = new SpriteSheet("sprites/bird.png", 8, 8);
+        Texture t0B = birdSprite.getTexture(0, 0);
+        Texture t1B = birdSprite.getTexture(0, 1);
+        Texture t2B = birdSprite.getTexture(0, 2);
+        Animation birdAnim = new Animation(.5f, t0B, t1B, t2B);
+        Bird bird = new Bird("bird", birdAnim);
         Game.addObjectToScene("game", bird);
+        
+        SpriteSheet planeSprite = new SpriteSheet("sprites/plane.png", 8, 2);
+        AirPlane plane = new AirPlane("plane", planeSprite);
+        Game.addObjectToScene("game", plane);
         
         Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
     }
