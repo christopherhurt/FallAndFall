@@ -10,14 +10,12 @@ public class Spawner extends ColoredGameObject {
     private static final float PLANE_OFFSET = Camera.getY() + .75f;
     private static final float OFFSET_RANGE = .75f;
     private static final float PROB_UPDATE = .0000001f;
-    private Random ran;
     private float prob;
     
     public Spawner(float birdProbability, float planeProbability) {
         super(0, 0, 0, 0, 0, 0, 0, 0, "spawner", Color.RED);
         this.birdProbability = birdProbability;
         this.planeProbability = planeProbability;
-        ran = new Random();
     }
     
     @Override
