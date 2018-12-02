@@ -10,13 +10,15 @@ public class Runner {
 
     public static final float UPWARD_SPEED = -.005f;
     
-    public static final float SPAWN_PROBABILITY = .01f;
+    public static final float SPAWN_PROBABILITY_BIRD = .01f;
+    public static final float SPAWN_PROBABILITY_AIRPLANE = .005f;
     
     public static void main(String[] args) 
     {
         Game.createScene("game");
         
-        Spawner spawner = new Spawner(SPAWN_PROBABILITY);
+        // i, jarod, suck dickles lul!
+        Spawner spawner = new Spawner(SPAWN_PROBABILITY_BIRD, SPAWN_PROBABILITY_AIRPLANE);
         Game.addObjectToScene("game", spawner);
         
         Background gameBackground = new Background(0);
