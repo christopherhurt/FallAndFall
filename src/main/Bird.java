@@ -3,7 +3,7 @@ package main;
 
 public class Bird extends AnimatedGameObject {
     
-    private static float width = .1f;
+    private static float width = .05f;
     private static float height = width;
     private static SpriteSheet birdSprite = new SpriteSheet("sprites/bird.png", 8, 8);
     private static Texture t0B = birdSprite.getTexture(0, 0);
