@@ -6,7 +6,7 @@ public class Background extends TexturedGameObject {
     private static final float OFFSET = 0.1f;
     
     public Background(float y) {
-        super(0, y, 0, 0, 0, 0, 1, 8, "gameBackground", new Texture("sprites/background.png"));
+        super(0, y, 0, Runner.UPWARD_SPEED, 0, 0, 1, 8, "gameBackground", new Texture("sprites/background.png"));
         past = false;
     }
     
