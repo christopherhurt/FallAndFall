@@ -26,7 +26,7 @@ public class Runner {
         Texture t5F = fallingBroSprite.getTexture(0, 5);
         Texture t6F = fallingBroSprite.getTexture(0, 6);
         Animation fallingBroAnim = new Animation(.5f, t0F, t1F, t2F, t3F, t2F, t1F, t0F, t4F, t5F, t6F, t5F, t4F);
-        FallingBro fallingBro = new FallingBro(0, 0, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
+        FallingBro fallingBro = new FallingBro(-.1f, -.1f, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
         Game.addObjectToScene("game", fallingBro);
         
         SpriteSheet birdSprite = new SpriteSheet("sprites/bird.png", 8, 8);

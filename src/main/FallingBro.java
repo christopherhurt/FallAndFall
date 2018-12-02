@@ -1,11 +1,13 @@
 package main;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class FallingBro extends AnimatedGameObject 
 {
     private static final float SPEED = 0.0002f;
     private static final float SIZE = 0.05f;
+    private boolean initialAnimation;
     
     public FallingBro(
         float x,
@@ -18,11 +20,21 @@ public class FallingBro extends AnimatedGameObject
         Animation animation) 
     {
         super(x, y, vX, vY, aX, aY, SIZE, 2 * SIZE, id, animation);
+        initialAnimation = true;
     }
 
     @Override
     public void update()
     {
+        if (initialAnimation)
+        {
+            if (getX() >= 0 && getY() >= 0)
+            {
+                initialAnimation = false;
+            }
+            return;
+        }
+        
         if (leftBound() && getVelX() < 0)
         {
             setX(0);
@@ -42,6 +54,15 @@ public class FallingBro extends AnimatedGameObject
         {
             setY(1 - getHeight());
             setVelY(0);
+        }
+        
+        List<GameObject> objs = Game.getObjectList("game");
+        for (GameObject obj : objs)
+        {
+            if (obj != this && obj.getClass() != Background.class && !obj.getBounds().intersection(this.getBounds()).isEmpty())
+            {
+                Game.setPaused(true);
+            }
         }
         
         float sumX = 0;
