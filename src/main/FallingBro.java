@@ -44,39 +44,28 @@ public class FallingBro extends AnimatedGameObject
             setVelY(0);
         }
         
+        float sumX = 0;
+        if (Input.isKeyDown(KeyEvent.VK_LEFT) && !leftBound())
+        {
+            sumX -= SPEED;
+        }
+        if (Input.isKeyDown(KeyEvent.VK_RIGHT) && !rightBound())
+        {
+            sumX += SPEED;
+        }
         
-        if (Input.isKeyPressed(KeyEvent.VK_LEFT) && !leftBound())
+        float sumY = 0;
+        if (Input.isKeyDown(KeyEvent.VK_UP) && !topBound())
         {
-            setAccX(-SPEED);
+            sumY -= SPEED;
         }
-        if (Input.isKeyReleased(KeyEvent.VK_LEFT))
+        if (Input.isKeyDown(KeyEvent.VK_DOWN) && !bottomBound())
         {
-            setAccX(0);
+            sumY += SPEED;
         }
-        if (Input.isKeyPressed(KeyEvent.VK_RIGHT) && !rightBound())
-        {
-            setAccX(SPEED);
-        }
-        if (Input.isKeyReleased(KeyEvent.VK_RIGHT))
-        {
-            setAccX(0);
-        }
-        if (Input.isKeyPressed(KeyEvent.VK_UP) && !topBound())
-        {
-            setAccY(-SPEED);
-        }
-        if (Input.isKeyReleased(KeyEvent.VK_UP))
-        {
-            setAccY(0);
-        }
-        if (Input.isKeyPressed(KeyEvent.VK_DOWN) && !bottomBound())
-        {
-            setAccY(SPEED);
-        }
-        if (Input.isKeyReleased(KeyEvent.VK_DOWN))
-        {
-            setAccY(0);
-        }
+        
+        setAccX(sumX);
+        setAccY(sumY);
     }
     
     private boolean leftBound()
