@@ -8,14 +8,15 @@ public class AirPlane extends TexturedGameObject {
     private static Random ran = new Random();
     private static float height = .1f;
     private static float width = 4 * height;
+    private static SpriteSheet planeSprite = new SpriteSheet("sprites/plane.png", 8, 2);
     private static int direction = ran.nextInt(2);
     
-    public AirPlane(String id, SpriteSheet sprites) {
+    public AirPlane(String id, float y) {
         super((float)(((2 * direction - 1) * (ran.nextInt(6) * .1)) + direction),
-            1.5f,
+            y,
             (-2 * direction + 1) * HORIZONTAL_SPEED,
             (float)((ran.nextInt(3) + 8) * .1 * Runner.UPWARD_SPEED),
-            0, 0, width, height, id, sprites.getTexture(0, direction));
+            0, 0, width, height, id, planeSprite.getTexture(0, direction));
     }
     
     @Override
