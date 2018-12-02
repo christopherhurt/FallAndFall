@@ -24,6 +24,8 @@ public class Starter {
         Animation fallingBroAnim = new Animation(.5f, t0F, t1F, t2F, t3F, t2F, t1F, t0F, t4F, t5F, t6F, t5F, t4F);
         FallingBro fallingBro = new FallingBro(-.1f, -.1f, vX, vY, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim); 
         Game.addObjectToScene("game", fallingBro);
+        
+        Game.setCurrentScene("game");
     }
 
 }

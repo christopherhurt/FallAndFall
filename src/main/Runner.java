@@ -15,9 +15,11 @@ public class Runner {
     
     public static void main(String[] args) 
     {
+        MainMenu.init();
+        GameOverMenu.init();
         Game.createScene("game");
         
-        Starter.start(0.004f, 0.0015f, 0);
+        MainMenu.construct();
         
         Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
     }

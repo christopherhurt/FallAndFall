@@ -6,6 +6,8 @@ import java.util.Random;
 public class AirPlane extends TexturedGameObject {
 
     private static float HORIZONTAL_SPEED = .005f;
+    private static float MAX_OFFSCREEN_DIST = 0.5f;
+    private static float SPEED_MULTIPLIER = 0.8f;
     private static Random ran = new Random();
     private static float height = .05f;
     private static float hitScale = 1.5f;
@@ -13,21 +15,23 @@ public class AirPlane extends TexturedGameObject {
     private static SpriteSheet planeSprite = new SpriteSheet("sprites/plane.png", 8, 2);
     private static Texture planeRightTex = planeSprite.getTexture(0, 0);
     private static Texture planeLeftText = planeSprite.getTexture(0, 1);
-    private int direction = ran.nextInt(2);
+    private int direction;
     
     public AirPlane(String id, float y) {
         super(0, 0, 0, 0, 0, 0, width, height, id, null);
-        setX((float)(((2 * direction - 1) * (ran.nextInt(6) * .1)) + direction));
+        direction = ran.nextInt(2);
+        float offscreenDist = (float)(Math.random() * MAX_OFFSCREEN_DIST);
+        setX(direction == 0 ? -width - offscreenDist : 1 + offscreenDist);
         setY(y);
         setVelX((-2 * direction + 1) * HORIZONTAL_SPEED);
-        setVelY((float)((ran.nextInt(3) + 8) * .1 * Runner.UPWARD_SPEED));
+        setVelY((float)(Math.random() * SPEED_MULTIPLIER * Runner.UPWARD_SPEED));
         setTexture(direction == 0 ? planeRightTex : planeLeftText);
     }
     
     @Override
     public void update()
     {
-        if (getY() <= 0 - getHeight())
+        if (getY() < -getHeight())
         {
             Game.removeObjectFromScene("game", this);
         }

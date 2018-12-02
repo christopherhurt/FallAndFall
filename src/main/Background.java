@@ -1,6 +1,8 @@
 package main;
 
-public class Background extends TexturedGameObject { 
+import java.util.List;
+
+public class Background extends TexturedGameObject {
     
     private boolean past;
     private static final float OFFSET = 0.1f;
@@ -13,13 +15,11 @@ public class Background extends TexturedGameObject {
     @Override
     public void update() {
         if (!past && getY() < 1 + OFFSET - getHeight()) {
-            Game.addObjectToScene("game", new Background(getY() + getHeight()));
-            Game.readdObjects("bird");
-            Game.readdObjects("fallingDUMASS");
-            //Game.readdObjects("airplane");
+            List<GameObject> objList = Game.getObjectList("game");
+            objList.add(0, new Background(getY() + getHeight()));
             past = true;
         }
-        if (getY() < -1 * getHeight()) {
+        if (getY() < -getHeight()) {
             Game.removeObjectFromScene("game", this);
         }
     }

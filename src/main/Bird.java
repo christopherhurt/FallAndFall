@@ -14,12 +14,13 @@ public class Bird extends AnimatedGameObject {
     
     public Bird(String id) {
         super(getRandomX(), OFFSET, 0, Runner.UPWARD_SPEED, 0, 0, width, height, id, birdAnim);
+        setBoundsSize(0.5f);
     }
     
     @Override
     public void update()
     {
-        if (getY() <= 0 - getHeight())
+        if (getY() < -getHeight())
         {
             Game.removeObjectFromScene("game", this);
         }

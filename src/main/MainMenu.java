@@ -15,7 +15,7 @@ public class MainMenu {
         final float titleWidth = 0.4f; // TODO: adjust these
         final float titleHeight = 0.1f;
         final float titleY = 0.25f;
-        GameObject title = new TexturedGameObject((1 - titleWidth) / 2, titleY, 0, 0, 0, 0, titleWidth, titleHeight, "mainMenuTitle", new Texture("sprites/tempBackground.png")); // TODO
+        GameObject title = new TexturedGameObject((1 - titleWidth) / 2, titleY, 0, 0, 0, 0, titleWidth, titleHeight, "mainMenuTitle", new Texture("sprites/bird.png")); // TODO
         Game.addObjectToScene("mainMenu", title);
         
         Menu menu = new Menu("mainMenu");
@@ -42,7 +42,7 @@ public class MainMenu {
         @Override
         public void update() {
             if(isClicked()) { // TODO: start the game
-                
+                Starter.start(0.004f, 0.0015f, 0);
             }
         }
         

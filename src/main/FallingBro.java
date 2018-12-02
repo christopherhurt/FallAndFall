@@ -26,6 +26,19 @@ public class FallingBro extends AnimatedGameObject
     @Override
     public void update()
     {
+        List<GameObject> airplanes = Game.getGameObjects("airplane");
+        List<GameObject> birds = Game.getGameObjects("bird");
+        for(GameObject airplane : airplanes)  {
+            if(Physics.checkCollision(this, airplane, Physics.WHOLE_BOUNDS, Physics.WHOLE_BOUNDS)) {
+                GameOverMenu.construct();
+            }
+        }
+        for(GameObject bird : birds) {
+            if(Physics.checkCollision(this, bird, Physics.WHOLE_BOUNDS, Physics.WHOLE_BOUNDS)) {
+                GameOverMenu.construct();
+            }
+        }
+        
         if (initialAnimation)
         {
             if (getX() >= 0 && getY() >= 0)
@@ -54,15 +67,6 @@ public class FallingBro extends AnimatedGameObject
         {
             setY(1 - getHeight());
             setVelY(0);
-        }
-        
-        List<GameObject> objs = Game.getObjectList("game");
-        for (GameObject obj : objs)
-        {
-            if (obj != this && obj.getClass() != Background.class && !obj.getBounds().intersection(this.getBounds()).isEmpty())
-            {
-                Game.setPaused(true);
-            }
         }
         
         float sumX = 0;

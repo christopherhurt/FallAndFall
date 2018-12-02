@@ -15,7 +15,7 @@ public class GameOverMenu {
         final float messageWidth = 0.4f; // TODO: adjust these
         final float messageHeight = 0.1f;
         final float messageY = 0.25f;
-        GameObject title = new TexturedGameObject((1 - messageWidth) / 2, messageY, 0, 0, 0, 0, messageWidth, messageHeight, "mainMenuTitle", new Texture("sprites/tempBackground.png")); // TODO
+        GameObject title = new TexturedGameObject((1 - messageWidth) / 2, messageY, 0, 0, 0, 0, messageWidth, messageHeight, "mainMenuTitle", new Texture("sprites/bird.png")); // TODO
         Game.addObjectToScene("mainMenu", title);
         
         Menu menu = new Menu("gameOverMenu");
@@ -42,7 +42,7 @@ public class GameOverMenu {
         @Override
         public void update() {
             if(isClicked()) { // TODO: restart the game
-                
+                Starter.start(0.004f, 0.0015f, 0);
             }
         }
         
