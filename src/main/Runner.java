@@ -17,30 +17,7 @@ public class Runner {
     {
         Game.createScene("game");
         
-        // i, jarod, suck dickles lul!
-        Spawner spawner = new Spawner(SPAWN_PROBABILITY_BIRD, SPAWN_PROBABILITY_AIRPLANE);
-        Game.addObjectToScene("game", spawner);
-        
-        Background gameBackground = new Background(0);
-        Game.addObjectToScene("game", gameBackground);
-
-        SpriteSheet fallingBroSprite = new SpriteSheet("sprites/player.png", 4, 8);
-        Texture t0F = fallingBroSprite.getTexture(0, 0);
-        Texture t1F = fallingBroSprite.getTexture(0, 1);
-        Texture t2F = fallingBroSprite.getTexture(0, 2);
-        Texture t3F = fallingBroSprite.getTexture(0, 3);
-        Texture t4F = fallingBroSprite.getTexture(0, 4);
-        Texture t5F = fallingBroSprite.getTexture(0, 5);
-        Texture t6F = fallingBroSprite.getTexture(0, 6);
-        Animation fallingBroAnim = new Animation(.5f, t0F, t1F, t2F, t3F, t2F, t1F, t0F, t4F, t5F, t6F, t5F, t4F);
-        FallingBro fallingBro = new FallingBro(-.1f, -.1f, 0.004f, 0.0015f, -0.00001f, 0.00001f, "fallingDUMASS", fallingBroAnim);   
-        Game.addObjectToScene("game", fallingBro);
-        
-//        Bird bird = new Bird("bird");
-//        Game.addObjectToScene("game", bird);
-//        
-//        AirPlane plane = new AirPlane("plane", 0);
-//        Game.addObjectToScene("game", plane);
+        Starter.start(0.004f, 0.0015f, 0);
         
         Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "eatmuhass", null, MAX_FPS, Color.CYAN);
     }
