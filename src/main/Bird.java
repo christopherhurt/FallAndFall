@@ -13,4 +13,12 @@ public class Bird extends AnimatedGameObject {
         super(x, 1f, 0, Runner.UPWARD_SPEED, 0, 0, width, height, id, anim);
     }
     
+    @Override
+    public void update()
+    {
+        if (getY() <= 0 - getHeight())
+        {
+            Game.removeObjectFromScene("game", this);
+        }
+    }
 }
