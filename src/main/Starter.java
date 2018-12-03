@@ -5,7 +5,7 @@ import java.awt.Font;
 
 public class Starter {
     
-    private static final float SPACE_TEXT_X = .7f;
+    private static final float SPACE_TEXT_X = .72f;
     private static final float SACRIFICE_TEXT_X = SPACE_TEXT_X - .0035f;
     private static final float SPACE_TEXT_Y = .05f;
     private static final float TEXT_Y_SEPARATOR = .05f;
