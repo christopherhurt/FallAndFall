@@ -14,16 +14,17 @@ public class ThrownBro extends TexturedGameObject {
     private static final Texture THROWN_TEX = thrownBroSS.getTexture(0, 1);
     
     private static final float THROW_VEL_MULTIPLIER = 0.01f;
-    private static final float THROW_SCORE_MULTIPLIER = 500f;
+    private static final float THROW_SCORE_MULTIPLIER = 50f;
     private static final float FALL_ACCEL = 0.0005f;
-    private static final float INIT_FALL_MULTIPLIER = 0.25f;
-    private static final float THROW_DELAY = 1f;
+    private static final float INIT_FALL_MULTIPLIER = 0.001f;
+    private static final float THROW_DELAY = 0f;
     
     private ThrowerBro throwerBro;
     private boolean thrown;
     private boolean moving;
     private int throwScore;
     private long throwTime;
+    private int thrownSpeed;
     
     public ThrownBro(ThrowerBro throwerBro) {
         super(calcX(throwerBro), calcY(throwerBro), 0, 0, 0, 0, WIDTH, HEIGHT, "thrownBro", HELD_TEX);
@@ -54,13 +55,14 @@ public class ThrownBro extends TexturedGameObject {
     
     @Override
     public void update() {
-        if(!thrown && Input.isKeyPressed(KeyEvent.VK_ENTER)) {
+        if(!thrown && Input.isKeyPressed(KeyEvent.VK_SPACE)) {
             throwTime = System.currentTimeMillis();
-            throwScore = (int)THROW_SCORE_MULTIPLIER; // TODO: depend on throw strength
+            thrownSpeed = PowerBar.stopPowerBar();
+            throwScore = thrownSpeed * (int)THROW_SCORE_MULTIPLIER; // TODO: depend on throw strength
             thrown = true;
         } else if(thrown) {
             if(getY() >= 1) {
-                Starter.startFallScene(getVelX() * INIT_FALL_MULTIPLIER, getVelY() * INIT_FALL_MULTIPLIER, throwScore);
+                Starter.startFallScene(thrownSpeed * INIT_FALL_MULTIPLIER, thrownSpeed * INIT_FALL_MULTIPLIER, throwScore);
             } else if(!moving && System.currentTimeMillis() - throwTime >= (long)(THROW_DELAY * 1000)) {
                 // TODO: change velocity to depend on throw strength
                 setVelX(THROW_VEL_MULTIPLIER);
