@@ -12,11 +12,12 @@ public class PowerBar extends ColoredGameObject {
     private static final float aX = 0;
     private static final float aY = 0;
     private static final float h = .02f;
-    private static final float POW_MULT = 0.012f;
+    private static final float POW_MULT = 0.024f;
     
     private int maxPow;
-    private int currPow;
+    private static int currPow;
     private int mult;
+    private static boolean moving = true;
     
     public PowerBar(
         String id,
@@ -32,19 +33,28 @@ public class PowerBar extends ColoredGameObject {
     }
 
     
+    public static int stopPowerBar()
+    {
+        moving = false;
+        return currPow;
+    }
+    
     @Override
     public void update()
     {
-        if (currPow == maxPow)
+        if (moving)
         {
-            mult = -1;
+            if (currPow == maxPow)
+            {
+                mult = -1;
+            }
+            else if (currPow == 0)
+            {
+                mult = 1;
+            }
+            currPow += mult;
+            setWidth(currPow * POW_MULT);
         }
-        else if (currPow == 0)
-        {
-            mult = 1;
-        }
-        currPow += mult;
-        setWidth(currPow * POW_MULT);
     }
     
 }
