@@ -12,10 +12,10 @@ public class MainMenu {
         GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "mainMenuBackground", new Texture("sprites/background.png"));
         Game.addObjectToScene("mainMenu", background);
         
-        final float titleWidth = 0.4f; // TODO: adjust these
         final float titleHeight = 0.1f;
+        final float titleWidth = titleHeight * 144f / 26f;
         final float titleY = 0.25f;
-        GameObject title = new TexturedGameObject((1 - titleWidth) / 2, titleY, 0, 0, 0, 0, titleWidth, titleHeight, "mainMenuTitle", new Texture("sprites/bird.png")); // TODO
+        TexturedGameObject title = new TexturedGameObject((1 - titleWidth) / 2, titleY, 0, 0, 0, 0, titleWidth, titleHeight, "mainMenuTitle", new Texture("menus/titleBanner.png"));
         Game.addObjectToScene("mainMenu", title);
         
         Menu menu = new Menu("mainMenu");
@@ -27,11 +27,11 @@ public class MainMenu {
     
     private static class StartButton extends TexturedMenuButton {
         
-        private static final float HEIGHT = 0.1f; // TODO: adjust these
+        private static final float HEIGHT = 0.1f;
         private static final float WIDTH = HEIGHT * 66f / 25f;
         private static final float Y = 0.6f;
         
-        private static final Texture UNHOVERED_TEX = new Texture("menus/startButtonUnhovered.png"); // TODO
+        private static final Texture UNHOVERED_TEX = new Texture("menus/startButtonUnhovered.png");
         private static final Texture HOVERED_TEX = new Texture("menus/startButtonHovered.png");
         private static final Texture CLICKED_TEX = new Texture("menus/startButtonClicked.png");
         
