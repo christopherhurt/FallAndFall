@@ -18,7 +18,13 @@ public class Starter {
         GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "throwSceneBackground", new Texture("sprites/background.png"));
         Game.addObjectToScene("throwScene", background);
         
-        GameObject building = new ColoredGameObject(0, 0.6f, 0, 0, 0, 0, 0.35f, 0.4f, "building", Color.GRAY); // TODO: texture
+        final float buildingWidth = 0.5f;
+        final float buildingHeight = buildingWidth * 238f / 206f;
+        final float showingX = 0.35f;
+        final float showingY = 0.4f;
+        final float buildingX = -buildingWidth + showingX;
+        final float buildingY = 1 - showingY;
+        GameObject building = new TexturedGameObject(buildingX, buildingY, 0, 0, 0, 0, buildingWidth, buildingHeight, "building", new Texture("sprites/building.png"));
         Game.addObjectToScene("throwScene", building);
         
         ThrowerBro thrower = new ThrowerBro(building);

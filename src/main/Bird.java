@@ -1,6 +1,5 @@
 package main;
 
-
 public class Bird extends AnimatedGameObject {
     
     private static float width = .05f;
@@ -15,7 +14,7 @@ public class Bird extends AnimatedGameObject {
     public Bird(String id) {
         super(getRandomX(), OFFSET, 0, Runner.UPWARD_SPEED, 0, 0, width, height, id, birdAnim);
         setBoundsSize(0.5f);
-        setBoundsRender(Physics.SINGLE_BOX_BOUNDS); // TODO
+        //setBoundsRender(Physics.SINGLE_BOX_BOUNDS);
     }
     
     @Override

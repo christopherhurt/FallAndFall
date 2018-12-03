@@ -21,7 +21,7 @@ public class FallingBro extends AnimatedGameObject
     {
         super(x, y, vX, vY, aX, aY, SIZE, 2 * SIZE, id, animation);
         initialAnimation = true;
-        setBoundsRender(Physics.SINGLE_BOX_BOUNDS); // TODO
+        //setBoundsRender(Physics.SINGLE_BOX_BOUNDS);
     }
 
     @Override
