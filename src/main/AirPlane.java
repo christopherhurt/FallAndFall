@@ -45,6 +45,7 @@ public class AirPlane extends TexturedGameObject {
         int w = (int)(Runner.WINDOW_WIDTH * getWidth());
         int h = (int)(Runner.WINDOW_HEIGHT * (getHeight() + height * (hitScale - 1)));
         g.drawImage(tex.getImage(), x, y, w, h, null);
+        g.drawRect(x, (int)(Runner.WINDOW_HEIGHT * getY()), w, (int)(Runner.WINDOW_HEIGHT * getHeight())); // TODO
     }
     
 }

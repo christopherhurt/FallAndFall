@@ -4,8 +4,8 @@ import java.awt.Color;
 
 public class Runner {
     
-    public static final int WINDOW_WIDTH = 800;
-    public static final int WINDOW_HEIGHT = 800;
+    public static final int WINDOW_WIDTH = 600;
+    public static final int WINDOW_HEIGHT = 600;
     public static final int MAX_FPS = 60;
 
     public static final float UPWARD_SPEED = -.005f;
