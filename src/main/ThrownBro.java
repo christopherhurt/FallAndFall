@@ -57,7 +57,7 @@ public class ThrownBro extends ColoredGameObject {
     public void update() {
         if(!thrown && Input.isKeyPressed(KeyEvent.VK_SPACE)) {
             throwTime = System.currentTimeMillis();
-            thrownSpeed = PowerBar.stopPowerBar();
+            thrownSpeed = ((PowerBar)(Game.getGameObjects("power").get(0))).stopPowerBar();
             throwScore = thrownSpeed * (int)THROW_SCORE_MULTIPLIER; // TODO: depend on throw strength
             thrown = true;
         } else if(thrown) {

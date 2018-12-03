@@ -15,9 +15,9 @@ public class PowerBar extends ColoredGameObject {
     private static final float POW_MULT = 0.024f;
     
     private int maxPow;
-    private static int currPow;
+    private int currPow;
     private int mult;
-    private static boolean moving = true;
+    private boolean moving = true;
     
     public PowerBar(
         String id,
@@ -33,7 +33,7 @@ public class PowerBar extends ColoredGameObject {
     }
 
     
-    public static int stopPowerBar()
+    public int stopPowerBar()
     {
         moving = false;
         return currPow;
