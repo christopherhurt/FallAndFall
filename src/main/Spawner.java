@@ -8,7 +8,7 @@ public class Spawner extends ColoredGameObject {
     private float planeProbability;
     private static final float PLANE_OFFSET = Camera.getY() + .75f;
     private static final float OFFSET_RANGE = .75f;
-    private static final float PROB_UPDATE = .00001f; // .0000001f;
+    private static final float PROB_UPDATE = .00001f;
     private float prob;
     private long startTime;
     

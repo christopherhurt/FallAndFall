@@ -12,7 +12,7 @@ public class HighScoreMenu {
     {
         highScoreMenu = new Menu(name);
         highScoreMenu.addLabel(new MenuLabel("Score:", "Arial", Font.PLAIN, .03f, Color.BLACK, .9f, .05f, "label"));
-        highScoreMenu.addLabel(new HighScoreMenuLabel("0", "Arial", Font.PLAIN, .03f, Color.BLACK, .9f, .1f, "score"));
+        highScoreMenu.addLabel(new MenuLabel("0", "Arial", Font.PLAIN, .03f, Color.BLACK, .9f, .1f, "score"));
         HighScoreMenu.initialScore = initialScore;
         setScore(initialScore);
     }

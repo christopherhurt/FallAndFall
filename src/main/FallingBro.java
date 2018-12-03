@@ -30,12 +30,12 @@ public class FallingBro extends AnimatedGameObject
         List<GameObject> birds = Game.getGameObjects("bird");
         for(GameObject airplane : airplanes)  {
             if(Physics.checkCollision(this, airplane, Physics.WHOLE_BOUNDS, Physics.WHOLE_BOUNDS)) {
-                GameOverMenu.construct();
+                GameOverMenu.construct(HighScoreMenu.getScore());
             }
         }
         for(GameObject bird : birds) {
             if(Physics.checkCollision(this, bird, Physics.WHOLE_BOUNDS, Physics.WHOLE_BOUNDS)) {
-                GameOverMenu.construct();
+                GameOverMenu.construct(HighScoreMenu.getScore());
             }
         }
         

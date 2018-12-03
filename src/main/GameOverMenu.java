@@ -1,12 +1,15 @@
 package main;
 
+import java.awt.Color;
+import java.awt.Font;
+
 public class GameOverMenu {
     
     public static void init() {
         Game.createScene("gameOverMenu");
     }
     
-    public static void construct() {
+    public static void construct(int finalScore) {
         Game.clearScene("gameOverMenu");
         
         GameObject background = new TexturedGameObject(0, -4, 0, 0, 0, 0, 1, 8, "gameOverMenuBackground", new Texture("sprites/background.png"));
@@ -19,6 +22,8 @@ public class GameOverMenu {
         Game.addObjectToScene("gameOverMenu", message);
         
         Menu menu = new Menu("gameOverMenu");
+        MenuLabel scoreLabel = new MenuLabel("Score: " + finalScore, "arial", Font.PLAIN, 0.05f, Color.BLACK, 0.38f, 0.5f, "gameOverScoreLabel");
+        menu.addLabel(scoreLabel);
         menu.addButton(new RestartButton());
         Game.attachMenuToScene("gameOverMenu", menu);
         
