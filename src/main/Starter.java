@@ -19,6 +19,9 @@ public class Starter {
         GameObject thrownPlayer = new ThrownBro(thrower);
         Game.addObjectToScene("throwScene", thrownPlayer);
         
+        GameObject powerBar = new PowerBar("power", Color.red, 20);
+        Game.addObjectToScene("throwScene", powerBar);
+        
         Game.setCurrentScene("throwScene");
     }
     

@@ -17,7 +17,7 @@ public class ThrownBro extends ColoredGameObject {
     private static final float THROW_SCORE_MULTIPLIER = 500f;
     private static final float FALL_ACCEL = 0.0005f;
     private static final float INIT_FALL_MULTIPLIER = 0.25f;
-    private static final float THROW_DELAY = 1f;
+    private static final float THROW_DELAY = 0f;
     
     private ThrowerBro throwerBro;
     private boolean thrown;
@@ -54,7 +54,7 @@ public class ThrownBro extends ColoredGameObject {
     
     @Override
     public void update() {
-        if(!thrown && Input.isKeyPressed(KeyEvent.VK_ENTER)) {
+        if(!thrown && Input.isKeyPressed(KeyEvent.VK_SPACE)) {
             throwTime = System.currentTimeMillis();
             throwScore = (int)THROW_SCORE_MULTIPLIER; // TODO: depend on throw strength
             thrown = true;
