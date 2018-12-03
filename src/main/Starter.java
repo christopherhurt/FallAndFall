@@ -1,8 +1,16 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class Starter {
+    
+    private static final float SPACE_TEXT_X = .7f;
+    private static final float SACRIFICE_TEXT_X = SPACE_TEXT_X - .0035f;
+    private static final float SPACE_TEXT_Y = .05f;
+    private static final float TEXT_Y_SEPARATOR = .05f;
+    private static final float SACRIFICE_TEXT_Y = SPACE_TEXT_Y + TEXT_Y_SEPARATOR;
+    
     
     public static void startThrowScene() {
         Game.clearScene("throwScene");
@@ -21,6 +29,13 @@ public class Starter {
         
         GameObject powerBar = new PowerBar("power", Color.red, 20);
         Game.addObjectToScene("throwScene", powerBar);
+        
+        MenuLabel pressSpace = new MenuLabel("PRESS SPACE", "Arial", Font.PLAIN, .03f, Color.BLACK, SPACE_TEXT_X, SPACE_TEXT_Y, "press space");
+        MenuLabel toSacrifice = new MenuLabel("TO SACRIFICE!", "Arial", Font.PLAIN, .03f, Color.BLACK, SACRIFICE_TEXT_X, SACRIFICE_TEXT_Y, "to sacrifice");
+        Menu power = new Menu("power ins");
+        power.addLabel(pressSpace);
+        power.addLabel(toSacrifice);
+        Game.attachMenuToScene("throwScene", power);
         
         Game.setCurrentScene("throwScene");
     }
