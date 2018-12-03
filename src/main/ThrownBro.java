@@ -8,6 +8,7 @@ public class ThrownBro extends TexturedGameObject {
     private static final float HEIGHT = WIDTH / 2;
     private static final float THROWER_OFFSET_X = -0.015f;
     private static final float THROWER_OFFSET_Y = -0.077f;
+    private static final float BASE_VX = .0025f;
     
     private static final SpriteSheet thrownBroSS = new SpriteSheet("sprites/thrownBro.png", 8, 4);
     private static final Texture HELD_TEX = thrownBroSS.getTexture(0, 0);
@@ -57,12 +58,12 @@ public class ThrownBro extends TexturedGameObject {
     public void update() {
         if(!thrown && Input.isKeyPressed(KeyEvent.VK_SPACE)) {
             throwTime = System.currentTimeMillis();
-            thrownSpeed = PowerBar.stopPowerBar();
+            thrownSpeed = ((PowerBar)(Game.getGameObjects("power").get(0))).stopPowerBar();
             throwScore = thrownSpeed * (int)THROW_SCORE_MULTIPLIER; // TODO: depend on throw strength
             thrown = true;
         } else if(thrown) {
             if(getY() >= 1) {
-                Starter.startFallScene(thrownSpeed * INIT_FALL_MULTIPLIER, thrownSpeed * INIT_FALL_MULTIPLIER, throwScore);
+                Starter.startFallScene(thrownSpeed * INIT_FALL_MULTIPLIER + BASE_VX, thrownSpeed * INIT_FALL_MULTIPLIER, throwScore);
             } else if(!moving && System.currentTimeMillis() - throwTime >= (long)(THROW_DELAY * 1000)) {
                 // TODO: change velocity to depend on throw strength
                 setVelX(THROW_VEL_MULTIPLIER);
