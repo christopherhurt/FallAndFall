@@ -22,7 +22,7 @@ public class Runner {
         
         MainMenu.construct();
         
-        Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "Fall and Fall", null, MAX_FPS, Color.RED);
+        Game.start(WINDOW_WIDTH, WINDOW_HEIGHT, "Fall and Fall", "icon.png", MAX_FPS, Color.RED);
     }
     
 }
