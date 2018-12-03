@@ -1,17 +1,17 @@
 package main;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-public class ThrownBro extends ColoredGameObject {
+public class ThrownBro extends TexturedGameObject {
     
     private static final float WIDTH = 0.14f;
     private static final float HEIGHT = WIDTH / 2;
-    private static final float THROWER_OFFSET_X = -0.02f;
-    private static final float THROWER_OFFSET_Y = -0.02f;
+    private static final float THROWER_OFFSET_X = -0.015f;
+    private static final float THROWER_OFFSET_Y = -0.077f;
     
-    private static final Color HELD_TEX = Color.GREEN; // TODO
-    private static final Color THROWN_TEX = Color.YELLOW;
+    private static final SpriteSheet thrownBroSS = new SpriteSheet("sprites/thrownBro.png", 8, 4);
+    private static final Texture HELD_TEX = thrownBroSS.getTexture(0, 0);
+    private static final Texture THROWN_TEX = thrownBroSS.getTexture(0, 1);
     
     private static final float THROW_VEL_MULTIPLIER = 0.01f;
     private static final float THROW_SCORE_MULTIPLIER = 50f;
@@ -50,7 +50,7 @@ public class ThrownBro extends ColoredGameObject {
     }
     
     private void setThrown() {
-        setColor(THROWN_TEX); // TODO: set texture
+        setTexture(THROWN_TEX);
     }
     
     @Override

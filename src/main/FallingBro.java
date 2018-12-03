@@ -70,21 +70,21 @@ public class FallingBro extends AnimatedGameObject
         }
         
         float sumX = 0;
-        if (Input.isKeyDown(KeyEvent.VK_A) && !leftBound())
+        if ((Input.isKeyDown(KeyEvent.VK_A) || Input.isKeyDown(KeyEvent.VK_LEFT)) && !leftBound())
         {
             sumX -= SPEED;
         }
-        if (Input.isKeyDown(KeyEvent.VK_D) && !rightBound())
+        if ((Input.isKeyDown(KeyEvent.VK_D) || Input.isKeyDown(KeyEvent.VK_RIGHT)) && !rightBound())
         {
             sumX += SPEED;
         }
         
         float sumY = 0;
-        if (Input.isKeyDown(KeyEvent.VK_W) && !topBound())
+        if ((Input.isKeyDown(KeyEvent.VK_W) || Input.isKeyDown(KeyEvent.VK_UP)) && !topBound())
         {
             sumY -= SPEED;
         }
-        if (Input.isKeyDown(KeyEvent.VK_S) && !bottomBound())
+        if ((Input.isKeyDown(KeyEvent.VK_S) || Input.isKeyDown(KeyEvent.VK_DOWN)) && !bottomBound())
         {
             sumY += SPEED;
         }
